@@ -12,8 +12,6 @@ services:
       HOST: mysql
     volumes:
       - ./html/:/var/www/html/
-    links:
-      - mysql
     depends_on:
       - mysql
     networks:
