@@ -1,0 +1,48 @@
+version: '3'
+volumes:
+  db-xcrud:
+services:
+  web:
+    image: php:7.2-apache
+    container_name: xcrud-php
+    restart: always
+    ports:
+      - 8085:80
+    environment:
+      HOST: mysql
+    volumes:
+      - ./html/:/var/www/html/
+    links:
+      - mysql
+    depends_on:
+      - mysql
+    networks:
+      - project_crud
+  mysql:
+    image: mysql:5.7
+    container_name: xcrud_mysql
+    ports:
+      - 3310:3306
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: xCrud
+    volumes:
+      - db-xcrud:/var/lib/mysql
+    networks:
+      - project_crud
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: db_admin
+    restart: always
+    ports: 
+      - 8090:80
+    environment:
+      PMA_HOST: mysql
+    depends_on:
+      - mysql
+    networks:
+      - project_crud
+
+networks:
+  project_crud:
+    driver: bridge
