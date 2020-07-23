@@ -1,0 +1,15 @@
+{
+    "name": "doroshukdv/html",
+    "description": "xcrud",
+    "type": "project",
+    "require": {
+        "robmorgan/phinx": "^0.12.3"
+    },
+    "license": "GPLv2",
+    "authors": [
+        {
+            "name": "Atlas",
+            "email": "doroshuk33@yandex.by"
+        }
+    ]
+}
